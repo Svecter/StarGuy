@@ -18,7 +18,7 @@ class titleScene extends Phaser.Scene {
         music = this.sound.add('track01', {volume: 0.2});
         music.play();
 
-        this.add.text(100, 550, 'CLICK THE IMAGE', {
+        this.add.text(100, 550, 'CLICK THE IMAGE!', {
             fontSize: '64px',
             fill: '#000',
         });
