@@ -61,8 +61,8 @@ class gameScene2 extends Phaser.Scene {
         this.physics.add.collider(player, platforms);
         this.physics.add.collider(stars, platforms);
 
-        score = 0;
-        scoreText = this.add.text(16, 16, 'Stars: 0', {
+        score = 120;
+        scoreText = this.add.text(16, 16, 'Stars: 120', {
             fontSize: '32px',
             fill: '#000',
          });
@@ -102,6 +102,9 @@ class gameScene2 extends Phaser.Scene {
         score += 10;
         scoreText.setText('Score: ' + score);
         this.earn.play();
+        if (score >= 240)
+            { this.scene.start('gameSceneCredits') }
+
 
     }
 

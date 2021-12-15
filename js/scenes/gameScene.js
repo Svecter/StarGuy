@@ -73,6 +73,7 @@ class gameScene extends Phaser.Scene {
 
         music = this.sound.add('track03', {volume: 0.3});
         music.play();
+
         this.earn = this.sound.add('earn', {volume: 1.5});
 
     }
@@ -102,6 +103,8 @@ class gameScene extends Phaser.Scene {
         score += 10;
         scoreText.setText('Score: ' + score);
         this.earn.play();
+        if (score >= 120)
+            { this.scene.start('gameScene2') }
 
     }
 
