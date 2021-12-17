@@ -1,7 +1,7 @@
 const config = {
   type: Phaser.AUTO,
   title: 'Star Guy',
-  version: '1.0',
+  version: '1.5',
   width: 800,
   height: 600,
   backgroundColor: 0xffffff,
