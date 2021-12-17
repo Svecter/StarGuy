@@ -9,7 +9,6 @@ class gameScene2 extends Phaser.Scene {
         this.load.image('island', 'assets/island.png');
         this.load.image('star', 'assets/star.png');
         this.load.spritesheet('player', 'assets/player.png', {frameWidth: 32, frameHeight: 48});
-        this.load.audio('track02', 'audio/track02.ogg');
         this.load.audio('earn', 'audio/earn.ogg');
          
     }
@@ -71,8 +70,6 @@ class gameScene2 extends Phaser.Scene {
 
         cursors = this.input.keyboard.createCursorKeys();
 
-        music = this.sound.add('track02', {volume: 0.3});
-        music.play();
         this.earn = this.sound.add('earn', {volume: 1.5});
 
     }

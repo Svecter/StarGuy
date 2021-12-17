@@ -24,3 +24,4 @@ let platforms;
 let stars;
 let score;
 let scoreText;
+let musicMenu;

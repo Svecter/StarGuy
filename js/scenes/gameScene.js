@@ -11,18 +11,16 @@ class gameScene extends Phaser.Scene {
         this.load.spritesheet('player', 'assets/player.png', {frameWidth: 32, frameHeight: 48});
         this.load.audio('track03', 'audio/track03.ogg');
         this.load.audio('earn', 'audio/earn.ogg');
-         
+
     }
-    
-    create (){
+
+    create () {
 
         platforms = this.physics.add.staticGroup();
         platforms.create(400, 588, 'ground');
+        platforms.create(250, 320, 'island');
         platforms.create(600, 450, 'island');
         platforms.create(50, 250, 'island');
-        platforms.create(650, 220, 'island');
-        platforms.create(250, 520, 'island');
-        platforms.create(250, 320, 'island');
 
         stars = this.physics.add.group({
             key: 'star',
@@ -35,11 +33,11 @@ class gameScene extends Phaser.Scene {
             child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
 
         });
-          
+
         player = this.physics.add.sprite(380, 500, 'player');
         player.setBounce(0);
         player.setCollideWorldBounds(true);
-          
+
         this.anims.create({
             key: 'idle',
             frames: [{ key: 'player', frame: 4}],
@@ -71,6 +69,8 @@ class gameScene extends Phaser.Scene {
 
         cursors = this.input.keyboard.createCursorKeys();
 
+        musicMenu.stop('track01');
+
         music = this.sound.add('track03', {volume: 0.3});
         music.play();
 
@@ -78,8 +78,8 @@ class gameScene extends Phaser.Scene {
 
     }
 
-    update()
-    {
+    update() {
+
         if (cursors.left.isDown) {
             player.setVelocityX(-160);
             player.anims.play('left', true);
@@ -93,19 +93,17 @@ class gameScene extends Phaser.Scene {
         if (cursors.up.isDown && player.body.touching.down) {
             player.setVelocityY(-330);
         }
-        
+
     }
 
     collectStar (player, star)
     {
         star.disableBody(true, true);
-
         score += 10;
         scoreText.setText('Score: ' + score);
         this.earn.play();
         if (score >= 120)
-            { this.scene.start('gameScene2') }
-
+            { this.scene.start('gameScene2') };
     }
 
 }

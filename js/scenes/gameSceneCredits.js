@@ -4,12 +4,18 @@ class gameSceneCredits extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('thanks', 'assets/thanks.png');
 
     }
 
     create() {
-        this.add.text(400, 300, 'THANKS FOR PLAY! ;)', {
-            fontSize: '64px',
+
+        this.cameras.main.fadeIn(2000, 0, 0, 0);
+
+        this.add.image(400, 270, 'thanks');
+
+        this.add.text(30, 500, 'Press F5 for play again!', {
+            fontSize: '40px',
             fill: '#000',
         });
 

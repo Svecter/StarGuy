@@ -13,10 +13,16 @@ class titleScene extends Phaser.Scene {
     }
 
     create() {
+
         this.cameras.main.fadeIn(2000, 0, 0, 0);
 
-        music = this.sound.add('track01', {volume: 0.2});
-        music.play();
+        this.input.on('pointerdown', function (pointer) {
+            music = this.sound.add('click-sound', {volume: 0.5});
+            music.play();
+        },  this);
+
+        musicMenu = this.sound.add('track01', {volume: 0.3});
+        musicMenu.play();
 
         this.add.image(400, 300, 'background');
 
@@ -35,16 +41,12 @@ class titleScene extends Phaser.Scene {
 
         this.add.image(400, 270, 'press-start');
         this.input.on('pointerdown', () => this.scene.start('gameSceneTitle'));
-        
+
         this.add.text(100, 550, 'CLICK THE IMAGE!', {
             fontSize: '64px',
             fill: '#000',
         });
 
-        this.input.on('pointerdown', function (pointer) {
-            music = this.sound.add('click-sound', {volume: 0.5});
-            music.play();   
-        },  this);
     }
 
     update() {
